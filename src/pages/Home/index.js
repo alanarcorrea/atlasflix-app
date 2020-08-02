@@ -12,10 +12,7 @@ function Home() {
       .then((categoriesWithVideos) => {
         setInicialValues(categoriesWithVideos.categories);
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err.message);
-      });
+      .catch((err) => err);
   }, []);
 
   return (
@@ -30,7 +27,6 @@ function Home() {
               <BannerMain
                 videoTitle={inicialValues[0].videos[0].title}
                 url={inicialValues[0].videos[0].url}
-                // videoDescription={inicialValues[0].videos[0].description}
               />
               <Carousel
                 ignoreFirstVideo

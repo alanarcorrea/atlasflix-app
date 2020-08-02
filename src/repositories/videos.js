@@ -3,7 +3,6 @@ import config from '../config';
 const URL_VIDEOS = `${config.URL}/videos`;
 
 function create(video) {
-  // console.log(JSON.stringify(video));
   return fetch(`${URL_VIDEOS}`, {
     method: 'POST',
     headers: {

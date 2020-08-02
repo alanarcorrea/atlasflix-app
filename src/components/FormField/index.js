@@ -75,7 +75,6 @@ function FormField({
   const fieldId = `id_${name}`;
   const isTextarea = type === 'textarea';
   const tag = isTextarea ? 'textarea' : 'input';
-  // const hasValue = Boolean(value.length);
   const hasSuggestions = Boolean(suggestions.length);
 
   return (

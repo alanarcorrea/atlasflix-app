@@ -17,20 +17,6 @@ function RegisterCategory() {
 
   const [categories, setCategories] = useState([]);
 
-  // useEffect(() => {
-  //   const url = window.location.hostname.includes('localhost')
-  //     ? 'http://localhost:4000/categories'
-  //     : 'http://localhost:4000/categories';
-
-  //   fetch(url)
-  //     .then(async (response) => {
-  //       const data = await response.json();
-  //       setCategories([
-  //         ...data.categories,
-  //       ]);
-  //     });
-  // }, []);
-
   useEffect(() => {
     categoriesRepository
       .getAll()
@@ -43,7 +29,6 @@ function RegisterCategory() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {values.name}
       </h1>
 
       <form onSubmit={function handleSubmit(data) {
