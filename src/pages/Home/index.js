@@ -10,7 +10,7 @@ function Home() {
   useEffect(() => {
     categoriesRepository.getAllWithVideos()
       .then((categoriesWithVideos) => {
-        setInicialValues(categoriesWithVideos);
+        setInicialValues(categoriesWithVideos.categories);
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -26,11 +26,11 @@ function Home() {
       {inicialValues.map((category, indice) => {
         if (indice === 0) {
           return (
-            <div key={category.id}>
+            <div key={category._id}>
               <BannerMain
                 videoTitle={inicialValues[0].videos[0].title}
                 url={inicialValues[0].videos[0].url}
-                videoDescription={inicialValues[0].videos[0].description}
+                // videoDescription={inicialValues[0].videos[0].description}
               />
               <Carousel
                 ignoreFirstVideo
@@ -42,7 +42,7 @@ function Home() {
 
         return (
           <Carousel
-            key={category.id}
+            key={category._id}
             category={category}
           />
         );

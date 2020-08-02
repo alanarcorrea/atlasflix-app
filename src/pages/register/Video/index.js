@@ -20,8 +20,8 @@ function RegisterVideo() {
   useEffect(() => {
     categoriesRepository
       .getAll()
-      .then((categories) => {
-        setCategories(categories);
+      .then((data) => {
+        setCategories(data.categories);
       });
   }, []);
 
@@ -37,12 +37,11 @@ function RegisterVideo() {
         videosRepository.create({
           title: values.title,
           url: values.url,
-          categoryId: choseCategory.id,
+          // eslint-disable-next-line no-underscore-dangle
+          categoryId: choseCategory._id,
 
         })
           .then(() => {
-            // eslint-disable-next-line no-console
-            console.log('cadastrou');
             history.push('/');
           });
       }}

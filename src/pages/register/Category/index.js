@@ -4,6 +4,7 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import categoriesRepository from '../../../repositories/categories';
 
 function RegisterCategory() {
   const inicialValues = {
@@ -16,17 +17,25 @@ function RegisterCategory() {
 
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const url = window.location.hostname.includes('localhost')
-      ? 'http://localhost:8080/categories'
-      : 'http://localhost:8080/categories';
+  // useEffect(() => {
+  //   const url = window.location.hostname.includes('localhost')
+  //     ? 'http://localhost:4000/categories'
+  //     : 'http://localhost:4000/categories';
 
-    fetch(url)
-      .then(async (response) => {
-        const data = await response.json();
-        setCategories([
-          ...data,
-        ]);
+  //   fetch(url)
+  //     .then(async (response) => {
+  //       const data = await response.json();
+  //       setCategories([
+  //         ...data.categories,
+  //       ]);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    categoriesRepository
+      .getAll()
+      .then((data) => {
+        setCategories(data.categories);
       });
   }, []);
 
@@ -39,10 +48,18 @@ function RegisterCategory() {
 
       <form onSubmit={function handleSubmit(data) {
         data.preventDefault();
-        setCategories([
-          ...categories,
-          values,
-        ]);
+
+        categoriesRepository.create({
+          name: values.name,
+          description: values.description,
+          color: values.color,
+        })
+          .then(() => {
+            setCategories([
+              ...categories,
+              values,
+            ]);
+          });
 
         clearForm();
       }}

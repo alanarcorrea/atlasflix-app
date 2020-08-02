@@ -3,7 +3,8 @@ import config from '../config';
 const URL_VIDEOS = `${config.URL}/videos`;
 
 function create(video) {
-  return fetch(`${URL_VIDEOS}?_embed=videos`, {
+  // console.log(JSON.stringify(video));
+  return fetch(`${URL_VIDEOS}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

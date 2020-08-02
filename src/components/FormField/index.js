@@ -75,7 +75,7 @@ function FormField({
   const fieldId = `id_${name}`;
   const isTextarea = type === 'textarea';
   const tag = isTextarea ? 'textarea' : 'input';
-  const hasValue = Boolean(value.length);
+  // const hasValue = Boolean(value.length);
   const hasSuggestions = Boolean(suggestions.length);
 
   return (
@@ -99,7 +99,7 @@ function FormField({
         </Label.Text>
         {
           hasSuggestions && (
-            <dataList id={`suggestionFor_${fieldId}`}>
+            <datalist id={`suggestionFor_${fieldId}`}>
               {
                 suggestions.map((suggestion) => (
                   <option value={suggestion} key={`suggestionFor_${fieldId}_option${suggestion}`}>
@@ -108,7 +108,7 @@ function FormField({
 
                 ))
               }
-            </dataList>
+            </datalist>
           )
         }
       </Label>
