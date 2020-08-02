@@ -16,10 +16,12 @@ const Main = styled.main`
     `}
 `;
 
-function PageDefault({ children, paddingAll }) {
+function PageDefault({
+  children, paddingAll, textButton, routerButton,
+}) {
   return (
     <>
-      <Menu />
+      <Menu textButton={textButton} routerButton={routerButton} />
       <Main paddingAll={paddingAll}>
         {children}
       </Main>
@@ -31,11 +33,15 @@ function PageDefault({ children, paddingAll }) {
 PageDefault.defaultProps = {
   paddingAll: 1,
   children: [],
+  textButton: 'Novo Vídeo',
+  routerButton: '/register/video',
 };
 
 PageDefault.propTypes = {
   children: PropTypes.arrayOf(PropTypes.array),
   paddingAll: PropTypes.number,
+  textButton: PropTypes.string,
+  routerButton: PropTypes.string,
 };
 
 export default PageDefault;

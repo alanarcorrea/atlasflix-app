@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useForm from '../../../hooks/useForm';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -26,7 +26,7 @@ function RegisterVideo() {
   }, []);
 
   return (
-    <PageDefault>
+    <PageDefault textButton="Nova Categoria" routerButton="/register/category">
 
       <h1>Cadastro de vídeo</h1>
 
@@ -75,10 +75,6 @@ function RegisterVideo() {
 
       <br />
       <br />
-
-      <Link to="/register/category">
-        Cadstrar Categoria
-      </Link>
     </PageDefault>
   );
 }

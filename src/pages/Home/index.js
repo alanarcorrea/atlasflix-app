@@ -16,13 +16,14 @@ function Home() {
   }, []);
 
   return (
-    <PageDefault paddingAll={0}>
+    <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
 
       {inicialValues.length === 0 && (<div>Loading...</div>)}
 
       {inicialValues.map((category, indice) => {
         if (indice === 0) {
           return (
+            // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
               <BannerMain
                 videoTitle={inicialValues[0].videos[0].title}
@@ -38,6 +39,7 @@ function Home() {
 
         return (
           <Carousel
+            // eslint-disable-next-line no-underscore-dangle
             key={category._id}
             category={category}
           />

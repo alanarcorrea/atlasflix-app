@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
 import categoriesRepository from '../../../repositories/categories';
+import { Title } from '../../../components/Carousel/styles';
 
 function RegisterCategory() {
   const inicialValues = {
@@ -26,7 +26,7 @@ function RegisterCategory() {
   }, []);
 
   return (
-    <PageDefault>
+    <PageDefault textButton="Novo Vídeo" routerButton="/register/video">
       <h1>
         Cadastro de Categoria:
       </h1>
@@ -87,16 +87,12 @@ function RegisterCategory() {
 
       <ul>
         {categories.map((category) => (
-          <li key={`${category.name}`}>
+          <Title style={{ backgroundColor: category.color || 'red', fontSize: '15px', margin: '10px' }}>
             {category.name}
-            {' '}
-          </li>
+          </Title>
         ))}
       </ul>
 
-      <Link to="/">
-        Ir para home
-      </Link>
     </PageDefault>
   );
 }
