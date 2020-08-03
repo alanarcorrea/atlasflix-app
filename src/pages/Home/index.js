@@ -17,6 +17,7 @@ function Home() {
 
   return (
     <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
+      <div>PELO AMOR DE DEUS!</div>
 
       {inicialValues.length === 0 && (<div>Loading...</div>)}
 
