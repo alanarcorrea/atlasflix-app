@@ -19,21 +19,17 @@ function Home() {
     <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
 
       {inicialValues.length === 0 && (<div>Loading...</div>)}
-      
 
-      {inicialValues.map((category, indice) => {
-        if (indice === 0 && inicialValues[0].videos.length) {
-          const video = inicialValues[0].videos[0];
+      {inicialValues.map((category, index) => {
+        const { videos } = inicialValues[0];
 
-          console.log('Video:', video);
-
+        if (index === 0 && videos.length) {
           return (
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
-              <p>------ {video.title}</p>
               <BannerMain
-                videoTitle={video.title}
-                url={video.url}
+                videoTitle={videos[0].title}
+                url={videos[0].url}
               />
               <Carousel
                 ignoreFirstVideo
