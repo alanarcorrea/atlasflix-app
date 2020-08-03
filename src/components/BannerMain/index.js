@@ -12,7 +12,6 @@ function getYouTubeId(youtubeURL) {
 
 export default function BannerMain({
   videoTitle,
-  videoDescription,
   url,
 }) {
   const youTubeID = getYouTubeId(url);
@@ -25,10 +24,6 @@ export default function BannerMain({
           <ContentAreaContainer.Title>
             {videoTitle}
           </ContentAreaContainer.Title>
-
-          <ContentAreaContainer.Description>
-            {videoDescription}
-          </ContentAreaContainer.Description>
         </ContentAreaContainer.Item>
 
         <ContentAreaContainer.Item>

@@ -21,7 +21,7 @@ function Home() {
       {inicialValues.length === 0 && (<div>Loading...</div>)}
 
       {inicialValues.map((category, indice) => {
-        if (indice === 0) {
+        if (indice === 0 && inicialValues[0].videos.length) {
           return (
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
