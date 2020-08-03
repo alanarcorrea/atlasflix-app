@@ -26,18 +26,20 @@ function Home() {
 
         if (index === 0 && videos.length) {
           return (
-            <div>AAAAAABBBB</div>
-            // eslint-disable-next-line no-underscore-dangle
-            <div key={category._id}>
-              <BannerMain
-                videoTitle={videos[0].title}
-                url={videos[0].url}
-              />
-              <Carousel
-                ignoreFirstVideo
-                category={inicialValues[0]}
-              />
-            </div>
+            <>
+              <div>AAAAAABBBB</div>
+              {/* eslint-disable-next-line no-underscore-dangle */}
+              <div key={category._id}>
+                <BannerMain
+                  videoTitle={videos[0].title}
+                  url={videos[0].url}
+                />
+                <Carousel
+                  ignoreFirstVideo
+                  category={inicialValues[0]}
+                />
+              </div>
+            </>
           )
         }
 
