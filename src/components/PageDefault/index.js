@@ -32,13 +32,13 @@ function PageDefault({
 
 PageDefault.defaultProps = {
   paddingAll: 1,
-  children: [],
+  children: {},
   textButton: 'Novo Vídeo',
   routerButton: '/register/video',
 };
 
 PageDefault.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.array),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   paddingAll: PropTypes.number,
   textButton: PropTypes.string,
   routerButton: PropTypes.string,

@@ -8,31 +8,27 @@ function Carousel({
   ignoreFirstvideo,
   category,
 }) {
-  const categoryName = category.name;
-  const categoryColor = category.color;
-  const { videos } = category;
-
   return (
     <VideoCardGroupContainer>
-      {categoryName && (
+      {category.name && (
         <>
-          <Title style={{ backgroundColor: categoryColor || 'red' }}>
-            {categoryName}
+          <Title style={{ backgroundColor: category.color || 'red' }}>
+            {category.name}
           </Title>
         </>
       )}
       <Slider>
-        {videos.map((videos, index) => {
+        {category.videos.map((video, index) => {
           if (ignoreFirstvideo && index === 0) {
             return null;
           }
 
           return (
-            <SliderItem key={videos.title}>
+            <SliderItem key={video.title}>
               <VideoCard
-                videoTitle={videos.title}
-                videoURL={videos.url}
-                categoryColor={categoryColor}
+                videoTitle={video.title}
+                videoURL={video.url}
+                categoryColor={category.color}
               />
             </SliderItem>
           );
@@ -48,8 +44,13 @@ Carousel.defaultProps = {
 
 Carousel.propTypes = {
   ignoreFirstvideo: PropTypes.number,
-  category: PropTypes.objectOf.isRequired,
-
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    videos: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
 };
 
 export default Carousel;

@@ -1,29 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
 import categoriesRepository from '../../../repositories/categories';
-import { Title } from '../../../components/Carousel/styles';
 
 function RegisterCategory() {
+  const history = useHistory();
+
   const inicialValues = {
     name: '',
     description: '',
-    color: '',
+    color: '#ff0000',
   };
 
-  const { handleChange, values, clearForm } = useForm(inicialValues);
+  const {
+    values, isValidated, handleChange, clearForm,
+  } = useForm(inicialValues);
 
-  const [categories, setCategories] = useState([]);
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  useEffect(() => {
-    categoriesRepository
-      .getAll()
-      .then((data) => {
-        setCategories(data.categories);
-      });
-  }, []);
+    if (isValidated) {
+      categoriesRepository.create({
+        name: values.name,
+        description: values.description,
+        color: values.color,
+      })
+        .then(() => {
+          history.push('/');
+        });
+
+      clearForm();
+    }
+  }
 
   return (
     <PageDefault textButton="Novo Vídeo" routerButton="/register/video">
@@ -31,25 +42,7 @@ function RegisterCategory() {
         Cadastro de Categoria:
       </h1>
 
-      <form onSubmit={function handleSubmit(data) {
-        data.preventDefault();
-
-        categoriesRepository.create({
-          name: values.name,
-          description: values.description,
-          color: values.color,
-        })
-          .then(() => {
-            setCategories([
-              ...categories,
-              values,
-            ]);
-          });
-
-        clearForm();
-      }}
-      >
-
+      <form onSubmit={handleSubmit}>
         <FormField
           label="Nome"
           type="text"
@@ -74,24 +67,10 @@ function RegisterCategory() {
           onChange={handleChange}
         />
 
-        {categories.length === 0 && (
-          <div>
-            Loading...
-          </div>
-        )}
-
-        <Button>
+        <Button type="submit" disabled={!isValidated}>
           Cadastrar
         </Button>
       </form>
-
-      <ul>
-        {categories.map((category) => (
-          <Title style={{ backgroundColor: category.color || 'red', fontSize: '15px', margin: '10px' }}>
-            {category.name}
-          </Title>
-        ))}
-      </ul>
 
     </PageDefault>
   );

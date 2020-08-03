@@ -11,7 +11,7 @@ function RegisterVideo() {
   const history = useHistory();
   const [categories, setCategories] = useState([]);
   const categoryNames = categories.map(({ name }) => name);
-  const { handleChange, values } = useForm({
+  const { values, isValidated, handleChange } = useForm({
     title: '',
     url: '',
     category: '',
@@ -25,26 +25,29 @@ function RegisterVideo() {
       });
   }, []);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const choseCategory = categories.find((category) => category.name === values.category);
+
+    if (isValidated) {
+      videosRepository.create({
+        title: values.title,
+        url: values.url,
+        // eslint-disable-next-line no-underscore-dangle
+        categoryId: choseCategory._id,
+      })
+        .then(() => {
+          history.push('/');
+        });
+    }
+  }
+
   return (
     <PageDefault textButton="Nova Categoria" routerButton="/register/category">
 
       <h1>Cadastro de vídeo</h1>
 
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        const choseCategory = categories.find((category) => category.name === values.category);
-
-        videosRepository.create({
-          title: values.title,
-          url: values.url,
-          // eslint-disable-next-line no-underscore-dangle
-          categoryId: choseCategory._id,
-
-        })
-          .then(() => {
-            history.push('/');
-          });
-      }}
+      <form onSubmit={handleSubmit}
       >
         <FormField
           label="Título"
@@ -68,7 +71,7 @@ function RegisterVideo() {
           suggestions={categoryNames}
         />
 
-        <Button type="submit">
+        <Button type="submit" disabled={!isValidated}>
           Cadastrar
         </Button>
       </form>

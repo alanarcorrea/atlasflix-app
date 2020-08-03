@@ -16,6 +16,12 @@ const Button = styled.button`
     display: inline-block;
     transition: opacity .3s;
     
+    ${({ disabled }) => disabled && `
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: default;
+    `}
+
     &:hover,
     &:focus {
         opacity: .5;
