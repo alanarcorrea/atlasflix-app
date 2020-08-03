@@ -18,6 +18,7 @@ function Home() {
   return (
     <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
 
+      <div>ALOUUUUU</div>
       {inicialValues.length === 0 && (<div>Loading...</div>)}
 
       {inicialValues.map((category, index) => {
@@ -25,6 +26,7 @@ function Home() {
 
         if (index === 0 && videos.length) {
           return (
+            <div>AAAAAABBBB</div>
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
               <BannerMain
@@ -36,7 +38,7 @@ function Home() {
                 category={inicialValues[0]}
               />
             </div>
-          );
+          )
         }
 
         return (

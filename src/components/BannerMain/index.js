@@ -57,5 +57,4 @@ BannerMain.propTypes = {
   url: PropTypes.string,
 };
 
-
 export default BannerMain;
