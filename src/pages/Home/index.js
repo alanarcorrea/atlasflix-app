@@ -17,17 +17,16 @@ function Home() {
 
   return (
     <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
-      <div>
-        INITAL TITLE ======
-        {inicialValues[0].videos[0].title}
-      </div>
-
-      <div>{JSON.stringify(inicialValues)}</div>
 
       {inicialValues.length === 0 && (<div>Loading...</div>)}
+      
 
       {inicialValues.map((category, indice) => {
-        if (indice === 0 && inicialValues[0].videos.length) {
+        return (
+          <div>{JSON.stringify(inicialValues)}</div>
+        );
+
+        /* if (indice === 0 && inicialValues[0].videos.length) {
           return (
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
@@ -49,7 +48,7 @@ function Home() {
             key={category._id}
             category={category}
           />
-        );
+        ); */
       })}
 
     </PageDefault>
