@@ -17,7 +17,12 @@ function Home() {
 
   return (
     <PageDefault paddingAll={0} textButton="Novo Vídeo" routerButton="/register/video">
-      <div>PELO AMOR DE DEUS!</div>
+      <div>
+        INITAL TITLE ======
+        {inicialValues[0].videos[0].title}
+      </div>
+
+      <div>{JSON.stringify(inicialValues)}</div>
 
       {inicialValues.length === 0 && (<div>Loading...</div>)}
 
