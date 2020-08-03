@@ -22,17 +22,20 @@ function Home() {
       
 
       {inicialValues.map((category, indice) => {
-        return (
-          <div>{JSON.stringify(inicialValues)}</div>
-        );
+        if (indice === 0 && inicialValues[0].videos.length) {
+          const video = inicialValues[0].videos[0];
 
-        /* if (indice === 0 && inicialValues[0].videos.length) {
+          console.log('Video:', video);
+
           return (
+            
+            <p>------ {video.title}</p>
+            
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
               <BannerMain
-                videoTitle={inicialValues[0].videos[0].title}
-                url={inicialValues[0].videos[0].url}
+                videoTitle={video.title}
+                url={video.url}
               />
               <Carousel
                 ignoreFirstVideo
@@ -48,7 +51,7 @@ function Home() {
             key={category._id}
             category={category}
           />
-        ); */
+        );
       })}
 
     </PageDefault>
