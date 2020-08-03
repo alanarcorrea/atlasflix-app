@@ -28,11 +28,9 @@ function Home() {
           console.log('Video:', video);
 
           return (
-            
-            <p>------ {video.title}</p>
-            
             // eslint-disable-next-line no-underscore-dangle
             <div key={category._id}>
+              <p>------ {video.title}</p>
               <BannerMain
                 videoTitle={video.title}
                 url={video.url}
