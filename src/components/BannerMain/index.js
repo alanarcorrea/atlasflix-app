@@ -6,9 +6,6 @@ import { BannerMainContainer, ContentAreaContainer, WatchButton } from './styles
 function BannerMain(props) {
   const { videoTitle, url } = props;
 
-  const youTubeID = getYouTubeId(url);
-  const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
-
   function getYouTubeId(youtubeURL) {
     return youtubeURL
       .replace(
@@ -17,16 +14,11 @@ function BannerMain(props) {
       );
   }
 
-  console.log('URL:', bgUrl);
+  const youTubeID = getYouTubeId(url);
+  const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
     <BannerMainContainer backgroundImage={bgUrl}>
-
-      <p>
-        -------------
-        {bgUrl}
-      </p>
-
       <ContentAreaContainer>
         <ContentAreaContainer.Item>
           <ContentAreaContainer.Title>
