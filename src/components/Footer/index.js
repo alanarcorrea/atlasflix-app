@@ -1,12 +1,14 @@
 import React from 'react';
 import { FooterBase } from './styles';
-import LogoFooter from '../../assets/img/LogoFooter.png';
 
 function Footer() {
   return (
     <FooterBase>
-      <a href="https://atlastechnol.com/">
-        <img src={LogoFooter} alt="Logo Atlas" />
+      <a href="https://github.com/alanarcorrea/atlasflix-app">
+        <p>Projeto Open Source</p>
+      </a>
+      <a href="hhttps://github.com/alanarcorrea">
+        <p>Criado por @alanarcorrea</p>
       </a>
 
     </FooterBase>
